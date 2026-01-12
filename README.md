@@ -18,7 +18,7 @@ folder structure:
   - - files for test
 
 
-- [ ] /fw_decoy - 172.22.0.6
+- [ ] /fw_decoy - 172.22.0.7
 ```
 Doesn't work:
 nmap -p 8080 -sS -Pn 172.22.0.7
@@ -52,7 +52,7 @@ tcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot leng
 17:11:40.830073 eth0  In  IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 44)
 
 ```
-- [ ] /fw_synblock - 172.22.0.7
+- [ ] /fw_synblock - 172.22.0.5
 ```
 Doesn't work:
 nmap -p 8080 --scanflags synack -Pn 172.22.0.5 --packet-trace
@@ -60,14 +60,14 @@ nmap -p 8080 --scanflags synack -Pn 172.22.0.5 --packet-trace
 Does work:
 nmap -p 8080 --scanflags syn -Pn 172.22.0.5 --packet-trace
 ```
-- [ ] /fw_ttl - 172.22.0.2
+- [ ] /fw_ttl - 172.22.0.6
 ```
 Doesn't work:
 nmap -p 8080 -sS -Pn 172.22.0.6
 Does work:
 nmap -p 8080 -sS --ttl 64 -Pn 172.22.0.6
 ```
-- [ ] /fw_basic_drop - 172.22.0.5
+- [ ] /fw_basic_drop - 172.22.0.2
 ```
 Doesn't work:
 nmap -p 8080,8081 -sS -Pn 172.22.0.2
@@ -76,7 +76,7 @@ Does work:
 nmap -p 8080,8081 -sU -Pn 172.22.0.2 -m u32 --data "0xDEADBEEF" --packet-trace -vv
 printf "\xDE\xAD\xBE\xEF" | socat - UDP:172.22.0.2:8081
 ```
-- [ ] /fw_rate_limit - 172.22.0.4
+- [ ] /fw_rate_limit - 172.22.0.8
 ```
 Doesn't work:
 nmap -p 8080 -sT -Pn 172.22.0.8
@@ -86,7 +86,7 @@ for i in {1..20}; do nmap -p 8080 -sT -Pn 172.22.0.8|grep "8080/tcp filtered" & 
 8080/tcp filtered http-proxy
 
 ```
-- [ ] /fw_knock
+- [ ] /fw_knock - 172.22.0.4
 ```
 Doesn't work:
 nmap -sS -sV -p 8080 172.22.0.4

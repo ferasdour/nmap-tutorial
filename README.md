@@ -1,6 +1,8 @@
 # Tutorial:
 Gist of this is to showcase ways to test nmap to get around, exploit, or emphasize firewall rules. 
 
+https://youtu.be/lUK7WN7zKko
+
 # Contributing:
 Please feel free to pr, file an issue, whatever. A linux VM with docker should be able to run these correctly. 
 

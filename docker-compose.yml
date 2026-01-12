@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  fw_basic_drop:
+    build: ./targets/basic_drop
+    container_name: fw_basic_drop
+    cap_add: ["NET_ADMIN","NET_RAW"]
+    networks:
+      labnet:
+        ipv4_address: 172.22.0.2
+        
+  fw_knock:
+    build: ./targets/knock
+    container_name: fw_knock
+    cap_add: ["NET_ADMIN","NET_RAW"]
+    networks:
+      labnet:
+        ipv4_address: 172.22.0.4
+
+  fw_synblock:
+    build: ./targets/synblock
+    container_name: fw_synblock
+    cap_add: ["NET_ADMIN","NET_RAW"]
+    networks:
+      labnet:
+        ipv4_address: 172.22.0.5
+
+  fw_ttl:
+    build: ./targets/ttl
+    container_name: fw_ttl
+    cap_add: ["NET_ADMIN","NET_RAW"]
+    networks:
+      labnet:
+        ipv4_address: 172.22.0.6
+
+  fw_decoy:
+    build: ./targets/decoy
+    container_name: fw_decoy
+    cap_add: ["NET_ADMIN","NET_RAW"]
+    networks:
+      labnet:
+        ipv4_address: 172.22.0.7
+
+  fw_rate_limit:
+    build: ./targets/rate_limit
+    container_name: fw_rate_limit
+    cap_add: ["NET_ADMIN","NET_RAW"]
+    networks:
+      labnet:
+        ipv4_address: 172.22.0.8
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/24

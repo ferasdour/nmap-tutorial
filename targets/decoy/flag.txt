@@ -1,0 +1,1 @@
+FLAG{decoy_bypass_success}
